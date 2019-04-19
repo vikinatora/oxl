@@ -65,6 +65,7 @@ router.get('/newest/:count',(req, res) => {
   let count = +req.params.count;
   Offer.find()
     .populate('creator')
+    .where({purchased:false})
     .sort({dateCreated: -1})
     .limit(count)
     .then((offers) => {
@@ -76,6 +77,7 @@ router.get('/hottest/:count',(req, res) => {
   let count = +req.params.count;
   Offer.find()
     .populate('creator')
+    .where({purchased:false})
     .sort({views: -1})
     .limit(count)
     .then((offers) => {
@@ -101,13 +103,13 @@ router.get('/details/:id', authCheck, (req, res) => {
     })
 })
 
-
 router.get('/user', authCheck, (req, res) => {
   const user = req.user._id
 
-  Furniture.find({creator: user})
-    .then((furniture) => {
-      return res.status(200).json(furniture)
+  Offer.find({creator: user})
+    .populate('category')
+    .then((offers) => {
+      return res.status(200).json(offers)
     })
 })
 
@@ -115,23 +117,23 @@ router.delete('/delete/:id', authCheck, (req, res) => {
   const id = req.params.id
   const user = req.user._id
 
-  Furniture.findById(id)
-    .then((furniture) => {
-      if (!furniture) {
+  Offer.findById(id)
+    .then((offer) => {
+      if (!offer) {
         return res.status(200).json({
           success: false,
-          message: 'Furniture does not exists!'
+          message: 'Offer does not exists!'
         })
       }
 
-      if ((furniture.creator.toString() != user && !req.user.roles.includes("Admin"))) {
+      if ((offer.creator.toString() != user && !req.user.roles.includes("Admin"))) {
          return res.status(401).json({
            success: false,
            message: 'Unauthorized!'
          })
       }
-
-      Furniture.findByIdAndDelete(id)
+      //TODO: Delete from category
+      Offer.findByIdAndDelete(id)
         .then(() => {
           return res.status(200).json({
             success: true,
@@ -173,34 +175,26 @@ router.put('/edit/:id', authCheck, async(req, res) => {
   })
 })
 
-router.get('/:id', authCheck, (req, res) => {
-  const id = req.params.id
+router.post('/purchase/:id', authCheck, async (req, res) => {
+  const id = req.params.id;
+  const value = req.body['value'];
 
-  Furniture.findById(id)
-    .then(furniture => {
-      if (!furniture) {
-        return res.status(404).json({
-          success: false,
-          message: 'Entry does not exists!'
-        })
-      }
-
-      let response = {
-        id,
-        make: furniture.make,
-        model: furniture.model,
-        year: furniture.year,
-        description: furniture.description,
-        price: furniture.price,
-        image: furniture.image
-      }
-
-      if (furniture.material) {
-        response.material = furniture.material
-      }
-
-      res.status(200).json(response)
+  let offer = await Offer.findById(id);
+  if(!offer) {
+    return res.status(404).json({
+      success: false,
+      message: 'Offer does not exists!'
     })
+  } 
+  offer.purchased = value;
+  offer.save();
+
+  return res.status(200).json({
+    success: true,
+    message: 'Offer purchased/unpurchased successfully!'
+  })
+    
 })
+
 
 module.exports = router

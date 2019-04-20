@@ -1,0 +1,36 @@
+  <div class="container">
+      <table #table align="center" mat-table [dataSource]="offers">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let offer"> {{offer.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let offer"> {{offer.price}}$ </td>
+          </ng-container>
+          <ng-container matColumnDef="views">
+            <th mat-header-cell *matHeaderCellDef> Views </th>
+            <td mat-cell *matCellDef="let offer"> {{offer.views}} </td>
+          </ng-container>
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let offer"> {{offer.category.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let offer" >
+              <button mat-button (click)="details(offer._id)">View</button>
+              <button mat-button (click)="edit(offer._id)">Edit</button>
+              <button mat-button (click)="delete(offer._id)">Delete</button>
+              <button *ngIf="!offer.purchased" mat-button (click)="markPurchased(offer._id)">Mark as Purchased</button>
+              <button *ngIf="offer.purchased" mat-button (click)="markUnpurchased(offer._id)">Mark as Unpurchased</button>
+      
+            </td>
+          </ng-container>  
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  </div>
+  
+

@@ -73,6 +73,20 @@ router.get('/newest/:count',(req, res) => {
     })
 })
 
+router.get('/search/:name/:category',(req, res) => {
+  var query = req.params.name;
+  var category = req.params.category;
+  Offer.find()
+    .populate('creator')
+    .populate('category')
+    .sort({dateCreated: -1})
+    .then((offers) => {
+      
+      offers = offers.filter(offer=> offer.name.toLowerCase().includes(query) && offer.category.id === category)
+      return res.status(200).json(offers)
+    })
+})
+
 router.get('/hottest/:count',(req, res) => {
   let count = +req.params.count;
   Offer.find()

@@ -81,8 +81,10 @@ router.get('/search/:name/:category',(req, res) => {
     .populate('category')
     .sort({dateCreated: -1})
     .then((offers) => {
-      
-      offers = offers.filter(offer=> offer.name.toLowerCase().includes(query) && offer.category.id === category)
+      offers = offers.filter(offer=> offer.name.toLowerCase().includes(query));
+      if(category!=="*") {
+        offer = offers.filter(offer=> offer.category.id === category);
+      }
       return res.status(200).json(offers)
     })
 })
@@ -148,10 +150,10 @@ router.delete('/delete/:id', authCheck, (req, res) => {
       }
       //TODO: Delete from category
       Offer.findByIdAndDelete(id)
-        .then(() => {
+        .then((offer) => {
           return res.status(200).json({
             success: true,
-            message: 'Furniture deleted successfully!'
+            message: `Offer ${offer.name} deleted successfully! `
           })
         })
     })
@@ -184,7 +186,7 @@ router.put('/edit/:id', authCheck, async(req, res) => {
     .then(() => {
       return res.status(200).json({
         success: true,
-        message: 'Offer edited successfully!'
+        message: `Offer ${offer.name} edited successfully!`
       })
   })
 })

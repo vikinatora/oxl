@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, ref:'Offer'
   }],
   phoneNumber:
-    {type: mongoose.Schema.Types.Number, required:true}
+    {type: mongoose.Schema.Types.String, required:true}
   
 });
 

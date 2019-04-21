@@ -83,7 +83,7 @@ router.get('/search/:name/:category',(req, res) => {
     .then((offers) => {
       offers = offers.filter(offer=> offer.name.toLowerCase().includes(query));
       if(category!=="*") {
-        offer = offers.filter(offer=> offer.category.id === category);
+        offers = offers.filter(offer=> offer.category.id === category);
       }
       return res.status(200).json(offers)
     })
@@ -121,12 +121,21 @@ router.get('/details/:id', authCheck, (req, res) => {
 
 router.get('/user', authCheck, (req, res) => {
   const user = req.user._id
-
-  Offer.find({creator: user})
+  if(req.user.roles.includes('Admin')){
+    Offer.find()
     .populate('category')
     .then((offers) => {
+      console.log(offers);
       return res.status(200).json(offers)
     })
+  } else {
+    Offer.find({creator: user})
+      .populate('category')
+      .then((offers) => {
+        return res.status(200).json(offers)
+      })
+  }
+    
 })
 
 router.delete('/delete/:id', authCheck, (req, res) => {

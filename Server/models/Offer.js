@@ -28,7 +28,7 @@ const offerSchema = new mongoose.Schema({
   },
   dateCreated: {
     type: mongoose.Schema.Types.Date,
-    default: Date.now()
+    default: Date.now
   },
   views:{
     type: mongoose.Schema.Types.Number,

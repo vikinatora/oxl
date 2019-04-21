@@ -9,8 +9,9 @@ module.exports = new PassportLocalStrategy({
   passReqToCallback: true
 }, (req, username, password, done) => {
   const salt = encryption.generateSalt();
+  const phoneNumber = req.body['phoneNumber'];
   const hashedPass = encryption.generateHashedPassword(salt, password);
-  User.create({username, hashedPass, salt}).then(() => {
+  User.create({username, phoneNumber, hashedPass, salt}).then(() => {
     return done(null)
   })
 })

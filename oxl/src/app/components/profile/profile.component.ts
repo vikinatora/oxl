@@ -5,6 +5,7 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { OfferService } from '../core/services/offer.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatTable } from '@angular/material/table';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private offersService: OfferService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.offers = this.activatedRoute.snapshot['_resolvedData']['offers'];

@@ -5,16 +5,19 @@
         <div class="img-container">
             <img class="card-img-top img-fluid" src={{offer.image}} alt="Card image cap">
         </div>
-        <h3 class="card-text">{{offer.description.slice(0,40)}}</h3>
-        <h4 class="card-text">by {{offer.creator.username}}</h4>
+        <h3 class="card-text">{{offer.description}}</h3>
+        <h2 class="card-text">${{offer.price}}</h2>
+
+        <!-- <h4 class="card-text">by {{offer.creator.username}}</h4> -->
         <h4>Views: {{offer.views}}</h4>
+        <h3 class="card-text">You can contact {{offer.creator.username}} on {{offer.creator.phoneNumber}}</h3>
         <div class="btn-holder">
                 <a routerLink="/offer/edit/{{offer._id}}">
             <button
                 *ngIf="username === offer.creator.username" 
                 type="button" 
                 class="btn btn-warning fluid">
-                <i class="fas fa-edit"></i>
+                Edit <i class="fas fa-edit"></i>
             </button>
             </a>
             <a routerLink="/offer/delete/{{offer._id}}">
@@ -22,7 +25,7 @@
                 *ngIf="authService.isAdmin() || username === offer.creator.username" 
                 type="button" 
                 class="btn btn-danger">
-                <i class="fas fa-trash-alt"></i>
+                Delete <i class="fas fa-trash-alt"></i>
             </button>
             </a>
         </div>

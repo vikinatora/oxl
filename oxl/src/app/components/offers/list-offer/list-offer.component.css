@@ -37,5 +37,5 @@ h4 {
 .card {
   position: relative;
     background-color: coral;
-    background-clip: border-box
+    background-clip: border-box;
 }

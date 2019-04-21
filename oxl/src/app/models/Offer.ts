@@ -8,4 +8,5 @@ export class Offer {
     dateCreated:string;
     views:number;
     purchased:boolean;
+    phoneNumber:string;
 }

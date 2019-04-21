@@ -21,6 +21,7 @@ export class DetailsOfferComponent implements OnInit {
   ngOnInit() {
     this.username = localStorage.getItem('username');
     this.offer = this.route.snapshot.data['offer'];
+    console.log(this.offer.creator['phoneNumber']);
   }
 
 }

@@ -23,13 +23,13 @@
     <input [ngModel]='formInput.description' type="text" name="description" class="form-control" placeholder="Description"
       required
       minlength="10"
-      maxlength="70">
+      maxlength="400">
   </div>
   <div class="alert alert-danger" *ngIf="form?.controls?.description?.errors?.required && form?.controls?.description?.touched">
     This field is required!
   </div>
   <div class="alert alert-danger" *ngIf="form?.controls?.description?.errors?.minlength || form?.controls?.description?.errors?.maxlength">
-      Description should be between 10 and 70 chars!
+      Description should be between 10 and 400 symbols!
   </div>
   <label>Price:</label>
   <div class="form-group input-group">

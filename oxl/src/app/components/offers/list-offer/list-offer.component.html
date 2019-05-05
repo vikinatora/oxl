@@ -1,0 +1,12 @@
+<div class="card col-sm-2 fluid" *ngFor="let offer of offers">
+    <img class="card-img-top img-fluid" src={{offer.image}} alt="Card image cap">
+    <h4 class="card-title row-sm-4">{{offer.name.slice(0,15)}}</h4>
+    <p class="card-text">{{offer.description.slice(0,40)}}</p>
+    <p class="card-text"><b>${{offer.price}}</b></p>
+    <a routerLink="/offer/details/{{offer._id}}">
+        <button type="button" class="btn btn-info">
+                View
+        </button>
+    </a>
+</div>
+  

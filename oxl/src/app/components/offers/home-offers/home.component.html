@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8 row">
+      <div class="container">
+          <div class="search-form">
+              <app-search-offer></app-search-offer>
+          </div>
+      </div>
+      
+      <h4 class="row-lg-1">Newest: </h4>
+      <app-list-offer class="row" [offers]="newestOffers"></app-list-offer>
+      <button type="button" class="btn btn-info" (click)="loadMoreNewest()">Load More</button>
+
+      <div>
+        <h4 class="row-lg-1">Most viewed: </h4>
+        <app-list-offer class="row" [offers]="hottestOffers"></app-list-offer>
+        <button type="button" class="btn btn-info" (click)="loadMoreMostViewed()">Load More</button>
+      </div>
+    </div>
+  <div class="col-sm-2"></div>
+</div>

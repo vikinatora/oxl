@@ -1,0 +1,75 @@
+<form #form="ngForm" (submit)="emitForm(form.value)">
+  <label>Name:</label>
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+    </div>
+    <input [ngModel]="formInput.name" name="name" class="form-control" placeholder="Name of offer"
+      required
+      minlength="3"
+      maxlength="50">
+  </div>
+  <div class="alert alert-danger" *ngIf="form?.controls?.name?.errors?.required && form?.controls?.name?.touched">
+    This field is required!
+  </div>
+  <div class="alert alert-danger" *ngIf="form?.controls?.name?.errors?.minlength || form?.controls?.name?.errors?.maxlength">
+      Name of the offer should be between 3 and 20 chars!
+  </div>
+  <label>Description:</label>
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fas fa-pen"></i> </span>
+    </div>
+    <input [ngModel]='formInput.description' type="text" name="description" class="form-control" placeholder="Description"
+      required
+      minlength="10"
+      maxlength="400">
+  </div>
+  <div class="alert alert-danger" *ngIf="form?.controls?.description?.errors?.required && form?.controls?.description?.touched">
+    This field is required!
+  </div>
+  <div class="alert alert-danger" *ngIf="form?.controls?.description?.errors?.minlength || form?.controls?.description?.errors?.maxlength">
+      Description should be between 10 and 400 symbols!
+  </div>
+  <label>Price:</label>
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fas fa-tag"></i> </span>
+    </div>
+    <input [ngModel]="formInput.price" name="price" class="form-control" placeholder="Price"
+      required>
+  </div>
+  <div class="alert alert-danger" *ngIf="form?.controls?.price?.errors?.required && form?.controls?.price?.touched">
+    This field is required!
+  </div>
+  <div class="alert alert-danger" *ngIf="form?.controls?.price?.errors?.pattern">
+      Price should be positive!
+  </div>
+  <label>Category:</label>
+  
+  <select [ngModel]="formInput.category" name="category" class="form-control" id="category">
+      <option ngValue = {{category._id}} *ngFor="let category of categories">{{category.name}}</option>
+  </select>
+  <label>Image:</label>
+  <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fas fa-image"></i> </span>
+      </div>
+      <input [ngModel]="formInput.image" 
+        name="image"
+        class="form-control"
+        placeholder="Image URL"
+        required
+        >
+    </div>
+    <div class="alert alert-danger" *ngIf="form?.controls.image?.errors?.required && form?.controls.image?.touched">
+      This field is required!
+    </div>
+    <div class="alert alert-danger" *ngIf="form?.controls.image?.errors?.pattern">
+        Please enter a valid image url!
+    </div>
+  
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="form?.invalid"> Create </button>
+  </div>
+</form>

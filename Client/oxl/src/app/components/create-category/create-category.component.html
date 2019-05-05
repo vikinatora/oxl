@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <h1>Create category</h1>
+        <form #form="ngForm" (submit)="createCategory(form.value)">
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input ngModel
+              name="name"
+              class="form-control"
+              placeholder="Category Name"
+              required
+              minlength="3"
+              maxlength="30"
+              >
+          </div>
+          <div class="alert alert-danger" *ngIf="form?.controls.name?.errors?.required && form?.controls.name?.touched">
+            This field is required!
+          </div>
+          <div class="alert alert-danger" *ngIf="form?.controls.name?.errors?.minlength">
+              Name should be atleast 3 chars!
+          </div>
+          <div class="alert alert-danger" *ngIf="form?.controls.name?.errors?.maxlength">
+            Name should be atleast less than 30 chars!
+        </div>
+          <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              </div>
+              <input ngModel
+                name="imageUrl"
+                class="form-control"
+                placeholder="Image URL"
+                required
+                >
+            </div>
+            <div class="alert alert-danger" *ngIf="form?.controls.imageUrl?.errors?.required && form?.controls.imageUrl?.touched">
+              This field is required!
+            </div>
+            <div class="alert alert-danger" *ngIf="form?.controls.imageUrl?.errors?.pattern">
+                Please enter a valid image url!
+            </div>
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="form?.invalid">Create</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>

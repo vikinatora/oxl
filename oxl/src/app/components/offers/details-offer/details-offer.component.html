@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="card col-sm-6">
+        <h1 class="card-title row-sm-4">{{offer.name}}</h1>
+        <div class="img-container">
+            <img class="card-img-top img-fluid" src={{offer.image}} alt="Card image cap">
+        </div>
+        <h3 class="card-text">{{offer.description}}</h3>
+        <h2 class="card-text">${{offer.price}}</h2>
+
+        <!-- <h4 class="card-text">by {{offer.creator.username}}</h4> -->
+        <h4>Views: {{offer.views}}</h4>
+        <h3 class="card-text">You can contact {{offer.creator.username}} on {{offer.creator.phoneNumber}}</h3>
+        <div class="btn-holder">
+                <a routerLink="/offer/edit/{{offer._id}}">
+            <button
+                *ngIf="username === offer.creator.username" 
+                type="button" 
+                class="btn btn-warning fluid">
+                Edit <i class="fas fa-edit"></i>
+            </button>
+            </a>
+            <a routerLink="/offer/delete/{{offer._id}}">
+                <button 
+                *ngIf="authService.isAdmin() || username === offer.creator.username" 
+                type="button" 
+                class="btn btn-danger">
+                Delete <i class="fas fa-trash-alt"></i>
+            </button>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+

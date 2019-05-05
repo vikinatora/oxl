@@ -1,7 +1,0 @@
-<form #form="ngForm" class="form-inline my-2 my-lg-0" (submit)="submit(form.value)">
-    <input [ngModel]="query" name="query" class="form-control mr-sm-2" type="text" placeholder="Search">
-    <select [ngModel]="category" name="category" class="form-control" id="category">
-        <option ngValue = {{category._id}} *ngFor="let category of categories">{{category.name}}</option>
-    </select>
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-  </form>

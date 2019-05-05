@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 img {
   width:150;
   height:120px;
@@ -38,4 +39,46 @@ h4 {
   position: relative;
     background-color: coral;
     background-clip: border-box;
+=======
+img {
+  width:150;
+  height:120px;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+a {
+  text-align: center
+}
+.btn-holder {
+  text-align: center;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.button
+{
+position:relative;
+margin-top:180px;
+}
+h4 {
+  margin-top: 15px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-bottom: 0;
+  margin-left: 0px
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border:1px;
+}
+.card {
+  position: relative;
+    background-color: coral;
+    background-clip: border-box;
+>>>>>>> d5dd9e9c329df9e9da215784fea469d81621d22d
 }

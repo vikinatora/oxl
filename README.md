@@ -21,3 +21,7 @@ Oxl is a simple trading Single-page application written in **Angular** and **Nod
 * Special admin profile page where he sees all past and current offers for moderation purposes
 * **Admin functionality can be tested by logging in with admin@admin.com as username and Admin as password by default(can be changed in User.js in the Server folder)
 
+## Setting up
+Install the dependencies in Server "npm install" and start the server "node index"(port:5000 by default)
+Install the dependencies in Oxl "npm install" and start the client "ng s" and navigate to localhost:4200 (by default)
+

@@ -1,11 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { OfferService } from '../../../core/services/offer.service';
-=======
-import { OfferService } from '../../core/services/offer.service';
->>>>>>> d5dd9e9c329df9e9da215784fea469d81621d22d
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/models/Category';
 

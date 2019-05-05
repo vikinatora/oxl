@@ -2,17 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Offer } from 'src/app/models/Offer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
-<<<<<<< HEAD
 import { OfferService } from '../../core/services/offer.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatTable } from '@angular/material/table';
 import { AuthService } from '../../core/services/auth.service';
-=======
-import { OfferService } from '../core/services/offer.service';
-import { ToastrService } from 'ngx-toastr';
-import { MatTable } from '@angular/material/table';
-import { AuthService } from '../core/services/auth.service';
->>>>>>> d5dd9e9c329df9e9da215784fea469d81621d22d
 
 @Component({
   selector: 'app-profile',

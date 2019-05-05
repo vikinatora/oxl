@@ -1,10 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-<<<<<<< HEAD
 import { CategoryService } from '../../core/services/category.service';
-=======
-import { CategoryService } from '../core/services/category.service';
->>>>>>> d5dd9e9c329df9e9da215784fea469d81621d22d
 import { Router } from '@angular/router';
 
 @Component({

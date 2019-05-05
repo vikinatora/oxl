@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { OfferService } from '../../../core/services/offer.service';
 import { AuthService } from '../../../core/services/auth.service';
-=======
-import { OfferService } from '../../core/services/offer.service';
-import { AuthService } from '../../core/services/auth.service';
->>>>>>> d5dd9e9c329df9e9da215784fea469d81621d22d
 import { Offer } from 'src/app/models/Offer';
 import { Category } from 'src/app/models/Category';
 import { ActivatedRoute } from '@angular/router';

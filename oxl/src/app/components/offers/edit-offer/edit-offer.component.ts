@@ -1,9 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-<<<<<<< HEAD
 import { OfferService } from '../../../core/services/offer.service';
-=======
-import { OfferService } from '../../core/services/offer.service';
->>>>>>> d5dd9e9c329df9e9da215784fea469d81621d22d
 import { Router, ActivatedRoute } from '@angular/router';
 import { Offer } from 'src/app/models/Offer';
 import { ToastrService } from 'ngx-toastr';
